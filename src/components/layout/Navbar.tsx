@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -23,10 +24,15 @@ export function Navbar(): React.ReactElement {
   return (
     <nav className="sticky top-0 z-50 border-b border-navy-light bg-navy/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-        <Link href="/" className="group flex flex-col gap-0.5">
-          <span className="font-display text-lg tracking-[0.25em] text-offwhite">
-            KLYSERA
-          </span>
+        <Link href="/" className="group flex items-center gap-3">
+          <Image
+            src="/klysera.svg"
+            alt="Klysera"
+            width={140}
+            height={32}
+            className="h-7 w-auto"
+            priority
+          />
           <span className="text-[10px] tracking-[0.3em] text-body-muted">
             SKILL BANK
           </span>

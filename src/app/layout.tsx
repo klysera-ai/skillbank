@@ -25,6 +25,9 @@ export const metadata: Metadata = {
   },
   description:
     "A curated catalog of AI-native engineering skills, mapped to roles and tasks.",
+  icons: {
+    icon: "/klysera.svg",
+  },
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ?? "https://skills.klysera.com"
   ),
