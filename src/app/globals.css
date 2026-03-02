@@ -1,26 +1,56 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --navy: #001F3F;
+  --navy-light: #0A2E54;
+  --navy-muted: #132D4A;
+  --offwhite: #F0F4F8;
+  --body: #2E333D;
+  --body-muted: #6B7280;
+  --accent: #3B82F6;
+  --layer-build: #3B82F6;
+  --layer-operate: #8B5CF6;
+  --layer-quality: #10B981;
+  --layer-support: #F59E0B;
+  --quality-1: #EF4444;
+  --quality-2: #F59E0B;
+  --quality-3: #10B981;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-navy: var(--navy);
+  --color-navy-light: var(--navy-light);
+  --color-navy-muted: var(--navy-muted);
+  --color-offwhite: var(--offwhite);
+  --color-body: var(--body);
+  --color-body-muted: var(--body-muted);
+  --color-accent: var(--accent);
+  --font-display: var(--font-display-family);
+  --font-body: var(--font-body-family);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--navy);
+  color: var(--offwhite);
+  font-family: var(--font-body-family), system-ui, sans-serif;
 }
+
+/* Subtle grain texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--navy); }
+::-webkit-scrollbar-thumb { background: var(--navy-light); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--navy-muted); }
