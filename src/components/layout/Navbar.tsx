@@ -10,6 +10,7 @@ const NAV_LINKS = [
   { href: "/skills", label: "Skills" },
   { href: "/taxonomy", label: "Taxonomy" },
   { href: "/roles", label: "Roles" },
+  { href: "/about", label: "About" },
 ] as const;
 
 export function Navbar(): React.ReactElement {
