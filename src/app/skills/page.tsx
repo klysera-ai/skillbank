@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { getAllSkills, getAllRoles, getAllTaskCategories, getAllFormatTypes } from '@/lib/queries'
 import { PageContainer } from '@/components/layout/PageContainer'
 import { SkillTable } from '@/components/skills/SkillTable'

@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { PageContainer } from '@/components/layout/PageContainer'
 import { TaxonomyGrid } from '@/components/taxonomy/TaxonomyGrid'
 import { FormatTypeBar } from '@/components/taxonomy/FormatTypeBar'

@@ -240,6 +240,23 @@ export async function POST(request: NextRequest) {
     // Use the first occurrence's sheet_row_id as the canonical one
     // This ensures idempotent upserts
 
+    // Delete orphaned skills (in DB but no longer in spreadsheet)
+    const currentSheetRowIds = dedupedSkills.map((s) => s.sheet_row_id)
+    const { data: allDbSkills } = await supabase
+      .from('skills')
+      .select('id, sheet_row_id')
+    const orphanIds = (allDbSkills ?? [])
+      .filter((row) => row.sheet_row_id && !currentSheetRowIds.includes(row.sheet_row_id))
+      .map((row) => row.id)
+    let deleted = 0
+    if (orphanIds.length > 0) {
+      const { error: delErr } = await supabase
+        .from('skills')
+        .delete()
+        .in('id', orphanIds)
+      if (!delErr) deleted = orphanIds.length
+    }
+
     // Upsert into Supabase
     let added = 0
     let updated = 0
@@ -293,6 +310,7 @@ export async function POST(request: NextRequest) {
       synced: dedupedSkills.length,
       added,
       updated,
+      deleted,
       warnings: allWarnings,
       errors,
     })

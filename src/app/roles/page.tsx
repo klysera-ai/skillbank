@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { PageContainer } from '@/components/layout/PageContainer'
 import { RoleCard } from '@/components/roles/RoleCard'
 import { getAllRoles, getAllSkills, getAllTaskCategories } from '@/lib/queries'
